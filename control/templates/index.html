@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/zui/1.9.1/css/zui.min.css">
+
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="//cdn.bootcss.com/zui/1.9.1/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/zui/1.9.1/js/zui.min.js"></script>
+
+    <style>
+        body{background: url({% static "image/bg.png" %}) no-repeat fixed center;
+            background-size:100% 100%;}
+
+    </style>
+
+     <style>
+        input {
+            border-bottom: 1px solid #dbdbdb;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            background-color: transparent;
+        }
+
+        input:focus {
+
+            outline: none;
+
+        }
+
+    </style>
+</head>
+{#background-color: white;#}
+<body>
+<div class="container">
+    <style>
+    a{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    </style>
+
+    <div class="col-xs-7" style="color: white;font-size: 30px;padding-top: 20px;padding-left: 20px">
+
+    {{ departmentPostion.position }}
+
+    </div>
+
+    <div class="col-xs-5">
+
+    {% ifequal userType 1 %}
+
+         <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
+
+        {% for foo in postionInfo %}
+
+            {% for foo2 in foo.edit %}
+                        <a class="btn btn-lg btn-primary" type="button">{{ foo2 }}</a>
+
+
+            {% endfor %}
+
+
+        {% endfor %}
+
+        <a class="btn btn-lg btn-primary" type="button" href="/supplier/">供应商档案</a>
+        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
+        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+ <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+
+
+
+    {% endifequal %}
+
+
+        {% ifequal userType 2 %}
+{#            ：采购报价单、材料运输单、预先发货清单#}
+
+         <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购报价单</a>
+        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+
+ <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
+
+
+
+    {% endifequal %}
+
+
+        {% ifequal userType 3 %}
+{#            制单员编辑权限：系统用户信息，权限管理，供应商档案、采购入库单、物料清单#}
+{#制单员浏览权限：采购订单、采购退货单、物料清单、材料运输单、出库单、预先发货清单、收货回执、#}
+
+
+         <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
+        <a class="btn btn-lg btn-primary" type="button">系统用户信息</a>
+        <a class="btn btn-lg btn-primary" type="button">权限管理</a>
+        <a class="btn btn-lg btn-primary" type="button">供应商档案</a>
+        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+ <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
+
+
+
+    {% endifequal %}
+
+
+        {% ifequal userType 4 %}
+
+
+
+         <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
+        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button">运输调度单</a>
+
+ <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+
+
+
+    {% endifequal %}
+
+        {% ifequal userType 5 %}
+
+{#            仓库管理员编辑权限：采购入库单、采购退货单、物料清单、出库单、材料运输单、出库单#}
+{#仓库管理员浏览权限：采购订单、预先发货清单、运输调度单运输调度单#}
+
+         <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button">出库单</a>
+ <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
+        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button">运输调度单</a>
+
+
+
+    {% endifequal %}
+
+
+
+        </div>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/zui/1.9.1/css/zui.min.css">
+
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="//cdn.bootcss.com/zui/1.9.1/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/zui/1.9.1/js/zui.min.js"></script>
+
+    <style>
+        body{background: url({% static "image/bg.png" %}) no-repeat fixed center;
+            background-size:100% 100%;}
+
+    </style>
+
+     <style>
+        input {
+            border-bottom: 1px solid #dbdbdb;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            background-color: transparent;
+        }
+
+        input:focus {
+
+            outline: none;
+
+        }
+
+    </style>
+</head>
+{#background-color: white;#}
+<body>
+<div class="container"  style="width: 65%;margin: 0 auto;background-color: white;min-height: 1200px;margin-top: 60px;margin-bottom: 50px;border-radius: 20px">
+
+
+{% block content %}
+
+
+    {% endblock %}
+
+
+</div>
+
+</body>
+</html>

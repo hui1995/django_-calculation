@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+    <div style="width: 100%;text-align: center"><h1>供应商档案</h1></div>
+
+    {% if isPermession %}
+
+
+    <form method="post">
+
+        {% if message %}
+            <div class="alert alert-primary"> {{ message }}</div>
+
+        {% endif %}
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-4">
+                供应商编号： <input type="text" name="supplier_id" value="{% if supplier %}
+{{ supplier.supplier_id }}
+                {% endif %}" {% if edit %}
+                              readonly
+            {% endif %}>
+            </div>
+            <div class="col-xs-4">供应商名称：
+                <input type="text" name="name" value="{% if supplier %}
+{{ supplier.name }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">电&nbsp&nbsp&nbsp话：
+                <input type="text" name="phone" value="{% if supplier %}
+{{ supplier.phone }}
+                {% endif %}">
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp址：
+                <input type="text" name="adress" value="{% if supplier %}
+{{ supplier.adress }}
+                {% endif %}">
+
+
+            </div>
+            <div class="col-xs-4">所&nbsp属&nbsp分&nbsp类：
+                <input type="text" name="category" value="{% if supplier %}
+{{ supplier.category }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">联系人：
+                <input type="text" name="user_name" value="{% if supplier %}
+                {{ supplier.user_name }}
+
+                {% endif %}">
+            </div>
+
+
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-xs-9"></div>
+            <div class="col-xs-3">
+                <button class="btn btn-primary" type="submit" style='width: 120px;height: 30px;margin-right: 0px'>
+                    {% if edit %}
+                        编辑
+
+                    {% else %}
+                        提交
+                    {% endif %}
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    {% endif %}
+
+
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-xs-6">
+                <form method="get" action="/supplier/">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+                             id="searchboxExample">
+                            <input id="inputSearchExample3" type="search" class="form-control search-input"
+{% if keywords %}
+{{ keywords }}
+{% endif %}                                   placeholder="搜索" name="keyword" value="
+">
+                            <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i
+                                    class="icon icon-search"></i></label>
+                        </div>
+                        <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit">搜索</button>
+  </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered" style="margin-top: 15px">
+            <thead>
+            <tr>
+                <th>供应商编号</th>
+                <th>供应商名称</th>
+                <th>电话</th>
+                <th>联系人</th>
+                <th>地址</th>
+                <th>所属分类</th>
+                                    {% if isPermession %}
+
+                <th>操作</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for foo in resultlst %}
+                <tr>
+                    <td>{{ foo.supplier_id }}</td>
+                    <td>{{ foo.name }}</td>
+                    <td>{{ foo.phone }}</td>
+                    <td>{{ foo.user_name }}</td>
+                    <td>{{ foo.adress }}</td>
+                    <td>{{ foo.category }}</td>
+                    {% if isPermession %}
+
+                    <td>
+                        <a class="btn btn-primary" type="button"
+                           href="/supplier/edit?id={{ foo.supplier_id }}{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}">编辑</a>
+                        <a class="btn btn-primary" type="button" href="/supplier/delete?id={{ foo.supplier_id }}
+{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}
+
+
+
+">删除</a>
+
+                    </td>
+                {% endif %}
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+{% endblock %}
