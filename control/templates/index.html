@@ -69,13 +69,13 @@
         {% endfor %}
 
         <a class="btn btn-lg btn-primary" type="button" href="/supplier/">供应商档案</a>
-        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
-        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
-        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purshcaseorder/">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchasereturn/">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/receipt/">收货回执</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/materialTransportationList/">材料运输单</a>
  <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
-        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchaseReceipt/">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/billOfMaterials/">物料清单</a>
 
 
 
@@ -83,17 +83,15 @@
 
 
         {% ifequal userType 2 %}
-{#            ：采购报价单、材料运输单、预先发货清单#}
 
          <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购报价单</a>
-        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
-        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/materialTransportationList/">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/advancedShippingNote/">预先发货清单</a>
 
  <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
-        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purshcaseorder/">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchasereturn/">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/receipt/">收货回执</a>
 
 
 
@@ -106,19 +104,19 @@
 
 
          <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
-        <a class="btn btn-lg btn-primary" type="button">系统用户信息</a>
-        <a class="btn btn-lg btn-primary" type="button">权限管理</a>
-        <a class="btn btn-lg btn-primary" type="button">供应商档案</a>
-        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
-        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/user/">系统用户信息</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/depart/">部门管理</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/supplier/">供应商档案</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchaseReceipt/">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/billOfMaterials/">物料清单</a>
  <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
-        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
-        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
-        <a class="btn btn-lg btn-primary" type="button">出库单</a>
-        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
-        <a class="btn btn-lg btn-primary" type="button">收货回执</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purshcaseorder/">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchasereturn/">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/billOfMaterials/">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/materialTransportationList/">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/outboundorder/">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/advancedShippingNote/">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/receipt/">收货回执</a>
 
 
 
@@ -130,15 +128,15 @@
 
 
          <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
-        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
-        <a class="btn btn-lg btn-primary" type="button">运输调度单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/materialTransportationList/">材料运输单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/transportationDispatch/">运输调度单</a>
 
  <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
-        <a class="btn btn-lg btn-primary" type="button">出库单</a>
-        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purshcaseorder/">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchaseReceipt/">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchasereturn/">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/outboundorder/">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/advancedShippingNote/">预先发货清单</a>
 
 
 
@@ -150,16 +148,15 @@
 {#仓库管理员浏览权限：采购订单、预先发货清单、运输调度单运输调度单#}
 
          <h4 style="color: white;font-size: 25px;margin-top: 200px">编辑</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购入库单</a>
-        <a class="btn btn-lg btn-primary" type="button">采购退货单</a>
-        <a class="btn btn-lg btn-primary" type="button">物料清单</a>
-        <a class="btn btn-lg btn-primary" type="button">出库单</a>
-        <a class="btn btn-lg btn-primary" type="button">材料运输单</a>
-        <a class="btn btn-lg btn-primary" type="button">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchaseReceipt/">采购入库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purchasereturn/">采购退货单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/billOfMaterials/">物料清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/outboundorder/">出库单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/materialTransportationList/">材料运输单</a>
  <h4 style="color: white;font-size: 25px;margin-top: 40px">浏览</h4>
-        <a class="btn btn-lg btn-primary" type="button">采购订单</a>
-        <a class="btn btn-lg btn-primary" type="button">预先发货清单</a>
-        <a class="btn btn-lg btn-primary" type="button">运输调度单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/purshcaseorder/">采购订单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/advancedShippingNote/">预先发货清单</a>
+        <a class="btn btn-lg btn-primary" type="button" href="/transportationDispatch/">运输调度单</a>
 
 
 

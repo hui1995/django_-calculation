@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+    <div style="width: 100%;text-align: center"><h1>收货回执</h1></div>
+
+    {% if isPermession %}
+
+
+    <form method="post">
+
+    
+
+        {% if message %}
+            <div class="alert alert-primary"> {{ message }}</div>
+
+        {% endif %}
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-4">
+                订单编号： <input type="text" name="id" value="{% if receipt %}
+{{ receipt.id }}
+                {% endif %}" {% if edit %}
+                              readonly
+            {% endif %}>
+            </div>
+
+            <div class="col-xs-4">货物编号：
+                <input type="text" name="goods_id" value="{% if receipt %}
+{{ receipt.goods_id }}
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">货物名称：
+                <input type="text" name="goods_name" value="{% if receipt %}
+{{ receipt.goods_name }}
+                {% endif %}">
+
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-4">规格型号：
+                <input type="text" name="Specification" value="{% if receipt %}
+{{ receipt.Specification }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">计量单位：
+                <input type="text" name="unit_of_measurement" value="{% if receipt %}
+                {{ receipt.unit_of_measurement }}
+
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">数量：
+                <input type="text" name="num" value="{% if receipt %}
+{{ receipt.num }}
+                {% endif %}">
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="col-xs-4">
+            {% if  edit %}
+
+
+                {% else %}
+                    日期：
+                <input type="date" name="date" value="{% if receipt %}
+{{ receipt.date }}
+                {% endif %}">
+            {% endif %}
+
+
+
+            </div>
+            <div class="col-xs-4"></div>
+
+                    <div class="col-xs-4">
+                <button class="btn btn-primary" type="submit" style='width: 120px;height: 30px;margin-right: 0px'>
+                    {% if edit %}
+                        编辑
+
+                    {% else %}
+                        提交
+                    {% endif %}
+
+                </button>
+
+            </div>
+
+
+
+        </div>
+
+
+    </form>
+
+    {% endif %}
+
+
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-xs-6">
+                <form method="get" action="/receipt/">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+                             id="searchboxExample">
+                            <input id="inputSearchExample3" type="search" class="form-control search-input"
+{% if keywords %}
+{{ keywords }}
+{% endif %}                                   placeholder="搜索" name="keyword" value="
+">
+                            <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i
+                                    class="icon icon-search"></i></label>
+                        </div>
+                        <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit">搜索</button>
+  </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered" style="margin-top: 15px">
+            <thead>
+            <tr>
+                <th>订单编号</th>
+                <th>货物编号</th>
+                <th>货物名称</th>
+                <th>规格型号</th>
+                <th>计量单位</th>
+                <th>数量</th>
+                <th>日期</th>
+                                    {% if isPermession %}
+
+                <th>操作</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for foo in resultlst %}
+                <tr>
+
+
+
+ 
+                    <td>{{ foo.id }}</td>
+                    <td>{{ foo.goods_id }}</td>
+                    <td>{{ foo.goods_name }}</td>
+                    <td>{{ foo.Specification }}</td>
+                    <td>{{ foo.unit_of_measurement }}</td>
+                    <td>{{ foo.num }}</td>
+                    <td>{{ foo.date }}</td>
+                    {% if isPermession %}
+
+                    <td>
+                        <a class="btn btn-primary" type="button"
+                           href="/receipt/edit?id={{ foo.id }}{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}">编辑</a>
+                        <a class="btn btn-primary" type="button" href="/receipt/delete?id={{ foo.id }}
+{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}
+
+
+
+">删除</a>
+
+                    </td>
+                {% endif %}
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+{% endblock %}

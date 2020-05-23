@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+    <div style="width: 100%;text-align: center"><h1>预先发货清单</h1></div>
+
+    {% if isPermession %}
+
+
+    <form method="post">
+
+    
+
+        {% if message %}
+            <div class="alert alert-primary"> {{ message }}</div>
+
+        {% endif %}
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-4">
+                订单编号： <input type="text" name="id" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.id }}
+                {% endif %}" {% if edit %}
+                              readonly
+            {% endif %}>
+            </div>
+
+            <div class="col-xs-4">货物编号：
+                <input type="text" name="goods_id" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.goods_id }}
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">货物名称：
+                <input type="text" name="goods_name" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.goods_name }}
+                {% endif %}">
+
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-4">规格型号：
+                <input type="text" name="Specification" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.Specification }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">计量单位：
+                <input type="text" name="unit_of_measurement" value="{% if advancedShippingNote %}
+                {{ advancedShippingNote.unit_of_measurement }}
+
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">数量：
+                <input type="text" name="num" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.num }}
+                {% endif %}">
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+              <div class="col-xs-4">
+
+                    运输方式：
+                <input type="text" name="type_of_shipping" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.type_of_shipping }}
+                {% endif %}">
+
+
+
+
+            </div>
+
+
+            <div class="col-xs-4">
+            {% if  edit %}
+
+
+                {% else %}
+                    到达日期：
+                <input type="date" name="arrival_date" value="{% if advancedShippingNote %}
+{{ advancedShippingNote.arrival_date }}
+                {% endif %}">
+            {% endif %}
+
+
+
+            </div>
+            <div class="col-xs-4"></div>
+
+                    <div class="col-xs-4">
+                <button class="btn btn-primary" type="submit" style='width: 120px;height: 30px;margin-right: 0px'>
+                    {% if edit %}
+                        编辑
+
+                    {% else %}
+                        提交
+                    {% endif %}
+
+                </button>
+
+            </div>
+
+
+
+        </div>
+
+
+    </form>
+
+    {% endif %}
+
+
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-xs-6">
+                <form method="get" action="/advancedShippingNote/">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+                             id="searchboxExample">
+                            <input id="inputSearchExample3" type="search" class="form-control search-input"
+{% if keywords %}
+{{ keywords }}
+{% endif %}                                   placeholder="搜索" name="keyword" value="
+">
+                            <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i
+                                    class="icon icon-search"></i></label>
+                        </div>
+                        <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit">搜索</button>
+  </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered" style="margin-top: 15px">
+            <thead>
+            <tr>
+                <th>订单编号</th>
+                <th>货物编号</th>
+                <th>货物名称</th>
+                <th>规格型号</th>
+                <th>计量单位</th>
+                <th>数量</th>
+                <th>运输方式</th>
+                <th>到达日期</th>
+                                    {% if isPermession %}
+
+                <th>操作</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for foo in resultlst %}
+                <tr>
+
+
+
+ 
+                    <td>{{ foo.id }}</td>
+                    <td>{{ foo.goods_id }}</td>
+                    <td>{{ foo.goods_name }}</td>
+                    <td>{{ foo.Specification }}</td>
+                    <td>{{ foo.unit_of_measurement }}</td>
+                    <td>{{ foo.num }}</td>
+                    <td>{{ foo.type_of_shipping }}</td>
+                    <td>{{ foo.arrival_date }}</td>
+                    {% if isPermession %}
+
+                    <td>
+                        <a class="btn btn-primary" type="button"
+                           href="/advancedShippingNote/edit?id={{ foo.id }}{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}">编辑</a>
+                        <a class="btn btn-primary" type="button" href="/advancedShippingNote/delete?id={{ foo.id }}
+{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}
+
+
+
+">删除</a>
+
+                    </td>
+                {% endif %}
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+{% endblock %}

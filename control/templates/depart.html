@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+    <div style="width: 100%;text-align: center"><h1>部门管理</h1></div>
+
+
+
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-xs-6">
+                <form method="get" action="/depart/">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+                             id="searchboxExample">
+                            <input id="inputSearchExample3" type="search" class="form-control search-input"
+{% if keywords %}
+{{ keywords }}
+{% endif %}                                   placeholder="搜索" name="keyword" value="
+">
+                            <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i
+                                    class="icon icon-search"></i></label>
+                        </div>
+                        <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit">搜索</button>
+  </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered" style="margin-top: 15px">
+            <thead>
+            <tr>
+                <th>部门编号</th>
+                <th>部门</th>
+                <th>职位</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for foo in resultlst %}
+                <tr>
+
+
+ 
+                    <td>{{ foo.id }}</td>
+                    <td>{{ foo.department }}</td>
+                    <td>{{ foo.position }}</td>
+
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+{% endblock %}

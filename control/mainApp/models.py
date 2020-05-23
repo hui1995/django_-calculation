@@ -9,9 +9,11 @@ class Supplier(models.Model):
     adress=models.TextField()
     category=models.CharField(max_length=20)
 
+
+#采购订单
 class PurchaseOrder(models.Model):
-    Warehouse=models.CharField(max_length=10)
-    supplier_id=models.IntegerField
+    warehouse=models.CharField(max_length=10)
+    supplier_id=models.IntegerField()
     supplier_name=models.CharField(max_length=20)
     goods_id=models.CharField(max_length=10)
     goods_name=models.CharField(max_length=20)
@@ -23,9 +25,9 @@ class PurchaseOrder(models.Model):
     channel=models.CharField(max_length=20)
     code=models.CharField(max_length=6)
 
-
+#采购入库单
 class PurchaseReceipt(models.Model):
-    Warehouse=models.CharField(max_length=10)
+    warehouse=models.CharField(max_length=10)
     goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
     Specification = models.CharField(max_length=20)
@@ -38,9 +40,10 @@ class PurchaseReceipt(models.Model):
     code=models.CharField(max_length=6)
 
 
+#采购退货单
 
 class PurchaseReturn(models.Model):
-    Warehouse=models.CharField(max_length=10)
+    warehouse=models.CharField(max_length=10)
     goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
     Specification = models.CharField(max_length=20)
@@ -49,9 +52,8 @@ class PurchaseReturn(models.Model):
     num = models.FloatField(max_length=20)
     price = models.DecimalField(max_digits=20,decimal_places=2)
 
-
+#物料清单
 class BillOfMaterials(models.Model):
-    goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
     channel=models.CharField(max_length=20)
     Specification = models.CharField(max_length=20)
@@ -61,9 +63,8 @@ class BillOfMaterials(models.Model):
     warehouse_admin=models.CharField(max_length=10)
     code=models.CharField(max_length=6)
 
-
+#材料运输单
 class MaterialTransportationList(models.Model):
-    goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
     Specification = models.CharField(max_length=20)
     unit_of_measurement = models.CharField(max_length=6)
@@ -80,7 +81,7 @@ class MaterialTransportationList(models.Model):
     confirm_receipt=models.CharField(max_length=6)
 
 
-
+#预先发货单
 class AdvancedShippingNote(models.Model):
     goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
@@ -91,9 +92,8 @@ class AdvancedShippingNote(models.Model):
     arrival_date=models.DateTimeField()
 
 
-
+#运输调度单
 class TransportationDispatch(models.Model):
-    goods_id = models.CharField(max_length=10)
     goods_name = models.CharField(max_length=20)
     start_point=models.CharField(max_length=50)
     end_point=models.CharField(max_length=50)
@@ -103,6 +103,8 @@ class TransportationDispatch(models.Model):
     accepted_by= models.CharField(max_length=20)
     date=models.DateTimeField()
 
+
+#出库单
 
 class OutboundOrder(models.Model):
     warehouse=models.CharField(max_length=10)

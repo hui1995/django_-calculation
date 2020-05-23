@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+    <div style="width: 100%;text-align: center"><h1>材料运输单</h1></div>
+
+    {% if isPermession %}
+
+
+    <form method="post">
+
+
+
+        {% if message %}
+            <div class="alert alert-primary"> {{ message }}</div>
+
+        {% endif %}
+        {% csrf_token %}
+        <div class="row">
+
+
+            <div class="col-xs-4">货物编号：
+                <input type="text" name="id" value="{% if materialTransportationList %}
+{{ materialTransportationList.id }}
+                {% endif %}"
+                {% ifnotequal position 1 %}
+                readonly
+                {% endifnotequal %}
+                >
+            </div>
+
+           <div class="col-xs-4">货物名称：
+                <input type="text" name="goods_name" value="{% if materialTransportationList %}
+{{ materialTransportationList.goods_name }}
+                {% endif %}"
+                            {% ifnotequal position 1 %}
+                readonly
+                {% endifnotequal %}
+                >
+
+
+            </div>
+
+       <div class="col-xs-4">规格型号：
+                <input type="text" name="Specification" value="{% if materialTransportationList %}
+{{ materialTransportationList.Specification }}
+                {% endif %}"                 {% ifnotequal position 1 %}
+                readonly
+                {% endifnotequal %}>
+
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+
+
+            <div class="col-xs-4">计量单位：
+                <input type="text" name="unit_of_measurement" value="{% if materialTransportationList %}
+{{ materialTransportationList.unit_of_measurement }}
+                {% endif %}"                 {% ifnotequal position 1 %}
+                readonly
+                {% endifnotequal %}>
+            </div>
+            <div class="col-xs-4">数量：
+                <input type="text" name="num" value="{% if materialTransportationList %}
+                {{ materialTransportationList.num }}
+
+                {% endif %}"                 {% ifnotequal position 1 %}
+                readonly
+                {% endifnotequal %}>
+            </div>
+       <div class="col-xs-4">到达集货中心：
+                <input type="text" name="collection_center" value="{% if materialTransportationList %}
+{{ materialTransportationList.collection_center }}
+                {% endif %}">
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-xs-4">查验入库：
+                <input type="text" name="inspection_and_warehousing" value="{% if materialTransportationList %}
+{{ materialTransportationList.inspection_and_warehousing }}
+                {% endif %}">
+            </div>
+
+
+
+            <div class="col-xs-4">入库：
+                <input type="text" name="in_warehousing" value="{% if materialTransportationList %}
+                {{ materialTransportationList.in_warehousing }}
+
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">仓库：
+                <input type="text" name="Warehouse" value="{% if materialTransportationList %}
+{{ materialTransportationList.Warehouse }}
+                {% endif %}">
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-xs-4">复核出库：
+                <input type="text" name="re_out_warehousing" value="{% if materialTransportationList %}
+{{ materialTransportationList.re_out_warehousing }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">出库：
+                <input type="text" name="out_warehousing" value="{% if materialTransportationList %}
+                {{ materialTransportationList.out_warehousing }}
+
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">装车配送：
+                <input type="text" name="loading_and_distribution" value="{% if materialTransportationList %}
+{{ materialTransportationList.loading_and_distribution }}
+                {% endif %}">
+            </div>
+
+        </div>
+
+      <div class="row">
+
+            <div class="col-xs-4">车辆编号：
+                <input type="text" name="car_num" value="{% if materialTransportationList %}
+{{ materialTransportationList.car_num }}
+                {% endif %}">
+            </div>
+            <div class="col-xs-4">到达工位：
+                <input type="text" name="arrival_station" value="{% if materialTransportationList %}
+                {{ materialTransportationList.arrival_station }}
+
+                {% endif %}">
+            </div>
+       <div class="col-xs-4">确认收货：
+                <input type="text" name="confirm_receipt" value="{% if materialTransportationList %}
+{{ materialTransportationList.confirm_receipt }}
+                {% endif %}">
+            </div>
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-xs-8"></div>
+
+                    <div class="col-xs-4">
+
+                                            {% ifequal position 1 %}
+
+                <button class="btn btn-primary" type="submit" style='width: 120px;height: 30px;margin-right: 0px'>
+                    {% if edit %}
+                        编辑
+
+                    {% else %}
+
+                        提交
+
+                    {% endif %}
+
+                </button>
+
+
+
+
+                    {% else %}
+
+
+                        {% if edit %}
+                             <button class="btn btn-primary" type="submit" style='width: 120px;height: 30px;margin-right: 0px'>
+  编辑
+
+
+        </button>
+
+
+                    {% endif %}
+
+
+
+
+
+                    {% endifequal %}
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </form>
+
+    {% endif %}
+
+
+        <div class="row" style="margin-top: 30px">
+
+            <div class="col-xs-6">
+                <form method="get" action="/materialTransportationList/">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+                             id="searchboxExample">
+                            <input id="inputSearchExample3" type="search" class="form-control search-input"
+{% if keywords %}
+{{ keywords }}
+{% endif %}                                   placeholder="搜索" name="keyword" value="
+">
+                            <label for="inputSearchExample3" class="input-control-icon-left search-icon"><i
+                                    class="icon icon-search"></i></label>
+                        </div>
+                        <span class="input-group-btn">
+    <button class="btn btn-primary" type="submit">搜索</button>
+  </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+        <table class="table table-bordered" style="margin-top: 15px">
+            <thead>
+            <tr>
+                <th>货物编号</th>
+                <th>货物名称</th>
+
+                <th>规格型号</th>
+                <th>计量单位</th>
+                <th>数量</th>
+                <th>到达集货中心</th>
+                <th>查验入库</th>
+                <th>入库</th>
+                <th>仓库</th>
+                <th>复核出库</th>
+                <th>出库</th>
+                <th>装车配送</th>
+                <th>车辆编号</th>
+                <th>到达工位</th>
+                <th>确认收货</th>
+                                    {% if isPermession %}
+
+                <th>操作</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+
+
+            {% for foo in resultlst %}
+                <tr>
+
+
+
+ 
+                    <td>{{ foo.id }}</td>
+                    <td>{{ foo.goods_name }}</td>
+                    <td>{{ foo.Specification }}</td>
+                    <td>{{ foo.unit_of_measurement }}</td>
+                    <td>{{ foo.num }}</td>
+                    <td>{{ foo.collection_center }}</td>
+                    <td>{{ foo.inspection_and_warehousing }}</td>
+                    <td>{{ foo.in_warehousing }}</td>
+                    <td>{{ foo.Warehouse }}</td>
+                    <td>{{ foo.re_out_warehousing }}</td>
+                    <td>{{ foo.out_warehousing }}</td>
+                    <td>{{ foo.loading_and_distribution }}</td>
+                    <td>{{ foo.car_num }}</td>
+                    <td>{{ foo.arrival_station }}</td>
+                    <td>{{ foo.confirm_receipt }}</td>
+                    {% if isPermession %}
+
+                    <td>
+                        <a class="btn btn-primary" type="button"
+                           href="/materialTransportationList/edit?id={{ foo.id }}{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}">编辑</a>
+
+
+                           {% ifequal position 1 %}
+
+
+
+                        <a class="btn btn-primary" type="button" href="/materialTransportationList/delete?id={{ foo.id }}
+{% if keywords %}
+
+&keyword={{ keywords }}
+
+{% endif %}
+
+
+
+">删除</a>
+                      {% endifequal %}
+
+                    </td>
+                {% endif %}
+                </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+
+{% endblock %}
