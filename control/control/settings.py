@@ -77,20 +77,20 @@ WSGI_APPLICATION = 'control.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'calc',
-        'USER': 'root',
-        'PASSWORD': 'breathcoder.com',
-        'HOST':'148.70.172.191',
-        'PORT': '3306',
-        # 设置MySQL的驱动
-        'options': {'init_command': 'SET storage_engine=INNODB'}
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'calc',
+    #     'USER': 'root',
+    #     'PASSWORD': 'breathcoder.com',
+    #     'HOST':'148.70.172.191',
+    #     'PORT': '3306',
+    #     # 设置MySQL的驱动
+    #     'options': {'init_command': 'SET storage_engine=INNODB'}
+    # }
 }
 
 
